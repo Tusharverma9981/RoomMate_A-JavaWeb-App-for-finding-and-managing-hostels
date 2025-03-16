@@ -1,0 +1,16 @@
+SMAP
+manageOwners_jsp.java
+JSP
+*S JSP
+*F
++ 0 manageOwners.jsp
+manageOwners.jsp
+*L
+5,57:46
+64,8:106
+71,2:114
+73,5:116,3
+78,3:131
+81,5:135
+85,8:140
+*E

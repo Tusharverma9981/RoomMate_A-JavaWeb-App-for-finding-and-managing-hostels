@@ -1,0 +1,18 @@
+SMAP
+manageListings_jsp.java
+JSP
+*S JSP
+*F
++ 0 manageListings.jsp
+manageListings.jsp
+*L
+5,70:46
+77,8:119
+84,2:127
+86,6:129,3
+92,2:147
+94:149,3
+95,3:152
+98,5:156
+102,9:161
+*E

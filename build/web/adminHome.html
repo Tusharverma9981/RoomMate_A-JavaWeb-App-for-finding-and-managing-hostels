@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Admin Dashboard</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #121212;
+            color: #ffffff;
+            margin: 0;
+            padding: 0;
+        }
+        .sidebar {
+            width: 250px;
+            height: 100vh;
+            background: #1e1e1e;
+            position: fixed;
+            padding: 20px;
+        }
+        .sidebar h2 {
+            text-align: center;
+            color: #4caf50;
+        }
+        .sidebar a {
+            display: block;
+            color: white;
+            padding: 10px;
+            text-decoration: none;
+            margin: 10px 0;
+            border-radius: 5px;
+            background: #333;
+            text-align: center;
+        }
+        .sidebar a:hover {
+            background: #4caf50;
+        }
+        .content {
+            margin-left: 300px;
+            padding: 20px;
+        }
+        .card {
+            background: #222;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 255, 0, 0.5);
+        }
+    </style>
+</head>
+<body>
+    <div class="sidebar">
+        <h2>Admin Dashboard</h2>
+        <a href="manageUsers.jsp">Manage Users</a>
+        <a href="manageOwners.jsp">Manage Owners</a>
+        <a href="manageListings.jsp">Manage Listings</a>
+        <a href="logout.jsp" style="background: red;">Logout</a>
+    </div>
+    
+    <div class="content">
+        <h1>Welcome, Admin</h1>
+        <div class="card">
+            <h3>Manage Users</h3>
+            <p>View, edit, or delete registered users.</p>
+        </div>
+        <div class="card">
+            <h3>Manage Owners</h3>
+            <p>View and manage property owners.</p>
+        </div>
+        <div class="card">
+            <h3>Manage Listings</h3>
+            <p>Review and approve property listings.</p>
+        </div>
+    </div>
+</body>
+</html>
+
