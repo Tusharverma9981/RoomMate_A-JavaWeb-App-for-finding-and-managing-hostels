@@ -86,7 +86,7 @@
         </div>
         
          <div class="mb-3">
-            <img src="https://media.istockphoto.com/id/1464143895/photo/hostel-dormitory-beds-at-cheap-room.jpg?s=2048x2048&w=is&k=20&c=KTe6Gxh9fE06uw4BFtrjsRdaWtToBXsjGJcTpXnJruA=" alt="originalImage" height="200px">
+            <img src="<%= rs.getString(7) %>" alt="originalImage" height="200px">
         </div>
       
         <div class="mb-3">

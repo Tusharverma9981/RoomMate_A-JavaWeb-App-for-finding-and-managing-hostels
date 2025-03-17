@@ -100,7 +100,7 @@ public final class listing_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("    ");
 
            
-
+            String username =(String)session.getAttribute("username");
             String title = request.getParameter("title");
 
             try {
@@ -119,7 +119,9 @@ public final class listing_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("    <h3>Listing details</h3>\n");
       out.write("    </div>\n");
       out.write("    <div class=\"card col-6 offset-3 show-card\" > \n");
-      out.write("        <img src=\"https://media.istockphoto.com/id/1464143895/photo/hostel-dormitory-beds-at-cheap-room.jpg?s=2048x2048&w=is&k=20&c=KTe6Gxh9fE06uw4BFtrjsRdaWtToBXsjGJcTpXnJruA=\" alt=\"image\" class=\"card-img-top show-img\" height=\"500px\">\n");
+      out.write("        <img src=\"");
+      out.print( rs.getString(7) );
+      out.write("\" alt=\"image\" class=\"card-img-top show-img\" height=\"500px\">\n");
       out.write("    <div class=\"card-body\">\n");
       out.write("        <p class=\"card-text\">\n");
       out.write("            <b> ");
@@ -129,16 +131,16 @@ public final class listing_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("            ");
       out.print( rs.getString(2) );
       out.write(" <br/>\n");
-      out.write("            &#8377; ");
+      out.write("            <b>per Month:</b> &#8377; ");
       out.print( rs.getString(3) );
       out.write(" <br/>\n");
-      out.write("           ");
+      out.write("          <b>Located at:</b> ");
       out.print( rs.getString(4) );
       out.write(" <br/>\n");
-      out.write("          ");
+      out.write("         <b>In City:</b>  ");
       out.print( rs.getString(5) );
       out.write(" <br/>\n");
-      out.write("          Owned by ");
+      out.write("           <b>Owned By:</b> ");
       out.print( rs.getString(6) );
       out.write(" <br/>\n");
       out.write("\n");
@@ -157,7 +159,7 @@ public final class listing_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("        \n");
       out.write("    <div class=\"btns\">\n");
       out.write("\n");
-      out.write("        <form method=\"POST\" action=\"\">\n");
+      out.write("        <form method=\"POST\" action=\"uploadReview\">\n");
       out.write("            <button class=\"btn btn-outline-dark col-1 offset-3 edit-btn mt-3\">Rent it</button>\n");
       out.write("        </form>\n");
       out.write("        </div>\n");
@@ -165,29 +167,19 @@ public final class listing_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("        <div class=\"col-8 offset-3 mb-3\">\n");
       out.write("            <hr>\n");
       out.write("            <h4>Leave a Review</h4>\n");
-      out.write("            <form action=\"\" method=\"POST\" novalidate class=\"needs-validation\">\n");
+      out.write("            <form action=\"\" method=\"POST\"  class=\"needs-validation\">\n");
       out.write("               \n");
-      out.write("                <div class=\"mb-3 mt-3\">\n");
-      out.write("                    <label for=\"rating\" class=\"form-label\">Rating</label>\n");
-      out.write("                <fieldset class=\"starability-slot\">\n");
-      out.write("                   \n");
-      out.write("                    \n");
-      out.write("                    <input type=\"radio\" id=\"no-rate\" class=\"input-no-rate\" name=\"review[rating]\" value=\"1\" checked aria-label=\"No rating.\" />\n");
-      out.write("                    <input type=\"radio\" id=\"first-rate1\" name=\"review[rating]\" value=\"1\" />\n");
-      out.write("                    <label for=\"first-rate1\" title=\"Terrible\">1 star</label>\n");
-      out.write("                    <input type=\"radio\" id=\"first-rate2\" name=\"review[rating]\" value=\"2\" />\n");
-      out.write("                    <label for=\"first-rate2\" title=\"Not good\">2 stars</label>\n");
-      out.write("                    <input type=\"radio\" id=\"first-rate3\" name=\"review[rating]\" value=\"3\" />\n");
-      out.write("                    <label for=\"first-rate3\" title=\"Average\">3 stars</label>\n");
-      out.write("                    <input type=\"radio\" id=\"first-rate4\" name=\"review[rating]\" value=\"4\" />\n");
-      out.write("                    <label for=\"first-rate4\" title=\"Very good\">4 stars</label>\n");
-      out.write("                    <input type=\"radio\" id=\"first-rate5\" name=\"review[rating]\" value=\"5\" />\n");
-      out.write("                    <label for=\"first-rate5\" title=\"Amazing\">5 stars</label>\n");
-      out.write("                  </fieldset>\n");
-      out.write("                </div>\n");
-      out.write("                <div class=\"mb-3 mt-3\">\n");
+      out.write("               \n");
+      out.write("                <div class=\"mb-3 mt-3\"> \n");
+      out.write("                    <input type=\"hidden\" value=\"");
+      out.print( username );
+      out.write("\" name=\"username\">\n");
+      out.write("                       <input type=\"hidden\" value=\"");
+      out.print( title );
+      out.write("\" name=\"title\">\n");
       out.write("                    <label for=\"comment\" class=\"form-label\">Comments</label>\n");
-      out.write("                    <textarea name=\"review[comment]\" id=\"comment\" cols=\"30\" rows=\"5\"\n");
+      out.write("                   \n");
+      out.write("                    <textarea name=\"comment\" id=\"comment\" cols=\"30\" rows=\"5\"\n");
       out.write("                    class=\"form-control\" required></textarea>\n");
       out.write("                </div>\n");
       out.write("                <button class=\"btn btn-outline-dark\">Submit</button>\n");
@@ -196,12 +188,28 @@ public final class listing_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("            <hr>\n");
       out.write("            <p>All Reviews</p>\n");
       out.write("            <div class=\"row\">\n");
-      out.write("                \n");
+      out.write("                ");
+  
+                   
+                try {
+               
+              
+              Statement  stmt = Dbconnecter.getStatement();
+                String query = "SELECT * FROM reviewtable WHERE title='"+title+"'";
+              ResultSet  rs = stmt.executeQuery(query);
+
+                while (rs.next()) {
+                
+      out.write("\n");
       out.write("    \n");
       out.write("                        <div class=\"card col-5 ms-3 mb-3  border\">\n");
       out.write("                            <div class=\"card-body mt-3\">\n");
-      out.write("                                <h5>Jone Doe</h5>\n");
-      out.write("                                <p class=\"card-text\">Good place to stay\n");
+      out.write("                                <h5> ");
+      out.print( rs.getString(2) );
+      out.write("</h5>\n");
+      out.write("                                <p class=\"card-text\"> ");
+      out.print( rs.getString(2) );
+      out.write("\n");
       out.write("                                </p>\n");
       out.write("                            \n");
       out.write("                                \n");
@@ -213,6 +221,13 @@ public final class listing_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("                                </form>\n");
       out.write("                            </div>\n");
       out.write("                        </div>\n");
+      out.write("                   ");
+
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }    
+      out.write("\n");
       out.write("                \n");
       out.write("            </div>\n");
       out.write("        </div>\n");

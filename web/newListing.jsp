@@ -1,4 +1,4 @@
-<%-- 
+ <%-- 
     Document   : newListing
     Created on : 14 Mar, 2025, 3:15:16 PM
     Author     : tv464
@@ -67,7 +67,7 @@
       
         <div class="mb-3">
             <label for="image" class="form-label">Upload Image link</label>
-        <input name="image" placeholder="enter image link" class="form-control" type="text">
+            <input name="image" placeholder="enter image link" class="form-control" type="text" required="">
         </div>
         <div class="mb-3">
             <label for="price" class="form-label">Price</label>

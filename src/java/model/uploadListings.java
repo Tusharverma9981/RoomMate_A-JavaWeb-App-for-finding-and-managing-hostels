@@ -14,10 +14,10 @@ import java.sql.Statement;
  * @author tv464
  */
 public class uploadListings {
-     public boolean upload(String title,String description,String price,String city,String location,String owner){
+     public boolean upload(String title,String description,String price,String city,String location,String owner,String image){
          Statement st = Dbconnecter.getStatement();
        try{
-           String query2="INSERT INTO listingtable values('"+title+"','"+description+"','"+price+"','"+city+"','"+location+"','"+owner+"')";
+           String query2="INSERT INTO listingtable values('"+title+"','"+description+"','"+price+"','"+city+"','"+location+"','"+owner+"','"+image+"')";
            System.out.println(query2);
         int i= st.executeUpdate(query2);
         if(i>0){

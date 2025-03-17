@@ -1,9 +1,8 @@
 <%-- 
-    Document   : home
-    Created on : 11 Mar, 2025, 2:38:39 PM
+    Document   : SearchResult
+    Created on : 17 Mar, 2025, 9:35:38 PM
     Author     : tv464
 --%>
-
 <%@page import="java.sql.ResultSet"%>
 <%@page import="db.Dbconnecter"%>
 <%@page import="java.sql.Statement"%>
@@ -97,15 +96,18 @@ footer .install img {
                 <a class="nav-link" href="proflie.jsp">Proflie</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="about.html">About</a>
+                <a class="nav-link" href="rules.html"></a>
+              </li>
+               <li class="nav-item">
+                <a class="nav-link" href="newListing.jsp"></a>
               </li>
                <li class="nav-item">
                 <a class="nav-link" href="logout.jsp">Log-out</a>
               </li>
               
             </ul>
-              <form class="d-flex" role="search" method="POST" action="searchAction">
-              <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="item">
+            <form class="d-flex" role="search">
+              <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
               <button class="btn btn-outline-success" type="submit">Search</button>
             </form>
              
@@ -114,53 +116,15 @@ footer .install img {
       </nav>
       <hr>
       
-      <div id="carouselExampleAutoplaying" class="carousel slide p-4" data-bs-ride="carousel">
-        <div class="carousel-indicators">
-          <button type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-          <button type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide-to="1" aria-label="Slide 2"></button>
-          <button type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide-to="2" aria-label="Slide 3"></button>
-        </div>
-        <div class="carousel-inner">
-          <div class="carousel-item active">
-            <img src="https://media.istockphoto.com/id/1464143895/photo/hostel-dormitory-beds-at-cheap-room.jpg?s=2048x2048&w=is&k=20&c=KTe6Gxh9fE06uw4BFtrjsRdaWtToBXsjGJcTpXnJruA=" class="d-block w-100" alt="img" height="650px">
-            <div class="carousel-caption d-none d-md-block">
-              <h5><b>Find Your Perfect Stay</b></h5>
-              <p>Explore a wide range of verified hostels, PGs, and rental properties designed for students and young professionals. Comfort and convenience just a click away!</p>
-            </div>
-          </div>
-          <div class="carousel-item">
-            <img src="https://thumbs.dreamstime.com/b/bunk-beds-hostel-room-54783568.jpg" class="d-block w-100" alt="img" height="650px">
-            <div class="carousel-caption d-none d-md-block">
-              <h5><b> List Your Property with Ease</b></h5>
-              <p>Have a space to rent out? Connect with potential tenants quickly and effortlessly on Room-Mate. Start listing today!</p>
-            </div>
-          </div>
-          <div class="carousel-item">
-            <img src="https://thumbs.dreamstime.com/b/backpackers-hostel-modern-bunk-beds-dorm-room-twelve-people-inside-79935795.jpg" class="d-block w-100" alt="img" height="650px">
-            <div class="carousel-caption d-none d-md-block">
-              <h5> <b> Your Next Home Awaits</b></h5>
-              <p>Discover fully-furnished, budget-friendly, and secure accommodations tailored to your needs. Begin your journey with Room-Mate!</p>
-            </div>
-          </div>
-        </div>
-        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="prev">
-          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Previous</span>
-        </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="next">
-          <span class="carousel-control-next-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Next</span>
-        </button>
-      </div>
-      <hr>
+      
 
 
-      <h2 class="text-center" id="simple-list-item-1">Find you next Home</h2>
+      <h2 class="text-center" id="simple-list-item-1">SEARCH RESULT'S</h2>
       <div class="container text-center">
         <div div class="row">
             
             <%
-           
+                    String item = request.getParameter("item");
 
             
 
@@ -168,7 +132,7 @@ footer .install img {
                
               
               Statement  stmt = Dbconnecter.getStatement();
-                String query = "SELECT * FROM listingtable";
+                String query = "SELECT  * FROM listingtable WHERE (city='"+item+"' OR title='"+item+"' OR location='"+item+"')";
               ResultSet  rs = stmt.executeQuery(query);
 
                 while (rs.next()) {
@@ -181,10 +145,10 @@ footer .install img {
                     <h5 class="card-title"><%= rs.getString(1) %></h5>
                 </div>
                 <ul class="list-group list-group-flush">
-                  <li class="list-group-item">&#8377;<%= rs.getString(3) %><b>/Month</b></li>  
+                    <li class="list-group-item">&#8377;<%= rs.getString(3) %> <b>/Month</b></li>  
                 </ul>
                 <div class="card-body">
-                    <a href="listing.jsp?title=<%= rs.getString(1) %>"><button type="button" class="btn btn-light">Rent It</button></a>
+                    <a href="ownlisting.jsp?title=<%= rs.getString(1) %>"><button type="button" class="btn btn-light">Rent It</button></a>
                 </div>
               </div>
             </div>
@@ -197,26 +161,7 @@ footer .install img {
         </div>
       </div>
 
-      <div class="card text-center m-4">
-        <div class="card-header">
-          Featured
-        </div>
-        <div class="card-body">
-          <h5 class="card-title">Special Offers</h5>
-          <p class="card-text">This is the discription of the offers given above </p>
-          <a href="#" class="btn btn-primary">get it</a>
-        </div>
-        <div class="card-footer text-body-secondary">
-          2 days ago
-        </div>
-      </div>
-     
-
-
-
-              
-
-
+   
 
 
 
@@ -271,3 +216,5 @@ footer .install img {
       <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </body>
 </html>
+
+

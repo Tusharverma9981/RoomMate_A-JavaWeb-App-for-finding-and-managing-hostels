@@ -7,7 +7,7 @@ import java.sql.ResultSet;
 import db.Dbconnecter;
 import java.sql.Statement;
 
-public final class home_jsp extends org.apache.jasper.runtime.HttpJspBase
+public final class SearchResult_jsp extends org.apache.jasper.runtime.HttpJspBase
     implements org.apache.jasper.runtime.JspSourceDependent {
 
   private static final JspFactory _jspxFactory = JspFactory.getDefaultFactory();
@@ -44,7 +44,6 @@ public final class home_jsp extends org.apache.jasper.runtime.HttpJspBase
       _jspx_out = out;
       _jspx_resourceInjector = (org.glassfish.jsp.api.ResourceInjector) application.getAttribute("com.sun.appserv.jsp.resource.injector");
 
-      out.write("\n");
       out.write("\n");
       out.write("\n");
       out.write("\n");
@@ -139,15 +138,18 @@ public final class home_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("                <a class=\"nav-link\" href=\"proflie.jsp\">Proflie</a>\n");
       out.write("              </li>\n");
       out.write("              <li class=\"nav-item\">\n");
-      out.write("                <a class=\"nav-link\" href=\"about.html\">About</a>\n");
+      out.write("                <a class=\"nav-link\" href=\"rules.html\"></a>\n");
+      out.write("              </li>\n");
+      out.write("               <li class=\"nav-item\">\n");
+      out.write("                <a class=\"nav-link\" href=\"newListing.jsp\"></a>\n");
       out.write("              </li>\n");
       out.write("               <li class=\"nav-item\">\n");
       out.write("                <a class=\"nav-link\" href=\"logout.jsp\">Log-out</a>\n");
       out.write("              </li>\n");
       out.write("              \n");
       out.write("            </ul>\n");
-      out.write("              <form class=\"d-flex\" role=\"search\" method=\"POST\" action=\"searchAction\">\n");
-      out.write("              <input class=\"form-control me-2\" type=\"search\" placeholder=\"Search\" aria-label=\"Search\" name=\"item\">\n");
+      out.write("            <form class=\"d-flex\" role=\"search\">\n");
+      out.write("              <input class=\"form-control me-2\" type=\"search\" placeholder=\"Search\" aria-label=\"Search\">\n");
       out.write("              <button class=\"btn btn-outline-success\" type=\"submit\">Search</button>\n");
       out.write("            </form>\n");
       out.write("             \n");
@@ -156,54 +158,16 @@ public final class home_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("      </nav>\n");
       out.write("      <hr>\n");
       out.write("      \n");
-      out.write("      <div id=\"carouselExampleAutoplaying\" class=\"carousel slide p-4\" data-bs-ride=\"carousel\">\n");
-      out.write("        <div class=\"carousel-indicators\">\n");
-      out.write("          <button type=\"button\" data-bs-target=\"#carouselExampleAutoplaying\" data-bs-slide-to=\"0\" class=\"active\" aria-current=\"true\" aria-label=\"Slide 1\"></button>\n");
-      out.write("          <button type=\"button\" data-bs-target=\"#carouselExampleAutoplaying\" data-bs-slide-to=\"1\" aria-label=\"Slide 2\"></button>\n");
-      out.write("          <button type=\"button\" data-bs-target=\"#carouselExampleAutoplaying\" data-bs-slide-to=\"2\" aria-label=\"Slide 3\"></button>\n");
-      out.write("        </div>\n");
-      out.write("        <div class=\"carousel-inner\">\n");
-      out.write("          <div class=\"carousel-item active\">\n");
-      out.write("            <img src=\"https://media.istockphoto.com/id/1464143895/photo/hostel-dormitory-beds-at-cheap-room.jpg?s=2048x2048&w=is&k=20&c=KTe6Gxh9fE06uw4BFtrjsRdaWtToBXsjGJcTpXnJruA=\" class=\"d-block w-100\" alt=\"img\" height=\"650px\">\n");
-      out.write("            <div class=\"carousel-caption d-none d-md-block\">\n");
-      out.write("              <h5><b>Find Your Perfect Stay</b></h5>\n");
-      out.write("              <p>Explore a wide range of verified hostels, PGs, and rental properties designed for students and young professionals. Comfort and convenience just a click away!</p>\n");
-      out.write("            </div>\n");
-      out.write("          </div>\n");
-      out.write("          <div class=\"carousel-item\">\n");
-      out.write("            <img src=\"https://thumbs.dreamstime.com/b/bunk-beds-hostel-room-54783568.jpg\" class=\"d-block w-100\" alt=\"img\" height=\"650px\">\n");
-      out.write("            <div class=\"carousel-caption d-none d-md-block\">\n");
-      out.write("              <h5><b> List Your Property with Ease</b></h5>\n");
-      out.write("              <p>Have a space to rent out? Connect with potential tenants quickly and effortlessly on Room-Mate. Start listing today!</p>\n");
-      out.write("            </div>\n");
-      out.write("          </div>\n");
-      out.write("          <div class=\"carousel-item\">\n");
-      out.write("            <img src=\"https://thumbs.dreamstime.com/b/backpackers-hostel-modern-bunk-beds-dorm-room-twelve-people-inside-79935795.jpg\" class=\"d-block w-100\" alt=\"img\" height=\"650px\">\n");
-      out.write("            <div class=\"carousel-caption d-none d-md-block\">\n");
-      out.write("              <h5> <b> Your Next Home Awaits</b></h5>\n");
-      out.write("              <p>Discover fully-furnished, budget-friendly, and secure accommodations tailored to your needs. Begin your journey with Room-Mate!</p>\n");
-      out.write("            </div>\n");
-      out.write("          </div>\n");
-      out.write("        </div>\n");
-      out.write("        <button class=\"carousel-control-prev\" type=\"button\" data-bs-target=\"#carouselExampleAutoplaying\" data-bs-slide=\"prev\">\n");
-      out.write("          <span class=\"carousel-control-prev-icon\" aria-hidden=\"true\"></span>\n");
-      out.write("          <span class=\"visually-hidden\">Previous</span>\n");
-      out.write("        </button>\n");
-      out.write("        <button class=\"carousel-control-next\" type=\"button\" data-bs-target=\"#carouselExampleAutoplaying\" data-bs-slide=\"next\">\n");
-      out.write("          <span class=\"carousel-control-next-icon\" aria-hidden=\"true\"></span>\n");
-      out.write("          <span class=\"visually-hidden\">Next</span>\n");
-      out.write("        </button>\n");
-      out.write("      </div>\n");
-      out.write("      <hr>\n");
+      out.write("      \n");
       out.write("\n");
       out.write("\n");
-      out.write("      <h2 class=\"text-center\" id=\"simple-list-item-1\">Find you next Home</h2>\n");
+      out.write("      <h2 class=\"text-center\" id=\"simple-list-item-1\">SEARCH RESULT</h2>\n");
       out.write("      <div class=\"container text-center\">\n");
       out.write("        <div div class=\"row\">\n");
       out.write("            \n");
       out.write("            ");
 
-           
+                    String item = request.getParameter("item");
 
             
 
@@ -211,7 +175,7 @@ public final class home_jsp extends org.apache.jasper.runtime.HttpJspBase
                
               
               Statement  stmt = Dbconnecter.getStatement();
-                String query = "SELECT * FROM listingtable";
+                String query = "SELECT  * FROM listingtable WHERE (city='"+item+"' OR title='"+item+"' OR location='"+item+"')";
               ResultSet  rs = stmt.executeQuery(query);
 
                 while (rs.next()) {
@@ -229,12 +193,12 @@ public final class home_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("</h5>\n");
       out.write("                </div>\n");
       out.write("                <ul class=\"list-group list-group-flush\">\n");
-      out.write("                  <li class=\"list-group-item\">&#8377;");
+      out.write("                    <li class=\"list-group-item\">&#8377;");
       out.print( rs.getString(3) );
-      out.write("<b>/Month</b></li>  \n");
+      out.write(" <b>/Month</b></li>  \n");
       out.write("                </ul>\n");
       out.write("                <div class=\"card-body\">\n");
-      out.write("                    <a href=\"listing.jsp?title=");
+      out.write("                    <a href=\"ownlisting.jsp?title=");
       out.print( rs.getString(1) );
       out.write("\"><button type=\"button\" class=\"btn btn-light\">Rent It</button></a>\n");
       out.write("                </div>\n");
@@ -251,26 +215,7 @@ public final class home_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("        </div>\n");
       out.write("      </div>\n");
       out.write("\n");
-      out.write("      <div class=\"card text-center m-4\">\n");
-      out.write("        <div class=\"card-header\">\n");
-      out.write("          Featured\n");
-      out.write("        </div>\n");
-      out.write("        <div class=\"card-body\">\n");
-      out.write("          <h5 class=\"card-title\">Special Offers</h5>\n");
-      out.write("          <p class=\"card-text\">This is the discription of the offers given above </p>\n");
-      out.write("          <a href=\"#\" class=\"btn btn-primary\">get it</a>\n");
-      out.write("        </div>\n");
-      out.write("        <div class=\"card-footer text-body-secondary\">\n");
-      out.write("          2 days ago\n");
-      out.write("        </div>\n");
-      out.write("      </div>\n");
-      out.write("     \n");
-      out.write("\n");
-      out.write("\n");
-      out.write("\n");
-      out.write("              \n");
-      out.write("\n");
-      out.write("\n");
+      out.write("   \n");
       out.write("\n");
       out.write("\n");
       out.write("\n");
@@ -325,6 +270,8 @@ public final class home_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("      <script src=\"https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js\" integrity=\"sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz\" crossorigin=\"anonymous\"></script>\n");
       out.write("</body>\n");
       out.write("</html>\n");
+      out.write("\n");
+      out.write("\n");
     } catch (Throwable t) {
       if (!(t instanceof SkipPageException)){
         out = _jspx_out;

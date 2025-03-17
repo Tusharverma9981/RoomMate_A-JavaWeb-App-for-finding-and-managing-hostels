@@ -104,8 +104,8 @@ footer .install img {
               </li>
               
             </ul>
-            <form class="d-flex" role="search">
-              <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+              <form class="d-flex" role="search" method="POST" action="searchAction">
+              <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="item">
               <button class="btn btn-outline-success" type="submit">Search</button>
             </form>
              
@@ -129,14 +129,14 @@ footer .install img {
             </div>
           </div>
           <div class="carousel-item">
-            <img src="https://media.istockphoto.com/id/1464143895/photo/hostel-dormitory-beds-at-cheap-room.jpg?s=2048x2048&w=is&k=20&c=KTe6Gxh9fE06uw4BFtrjsRdaWtToBXsjGJcTpXnJruA=" class="d-block w-100" alt="img" height="650px">
+            <img src="https://thumbs.dreamstime.com/b/bunk-beds-hostel-room-54783568.jpg" class="d-block w-100" alt="img" height="650px">
             <div class="carousel-caption d-none d-md-block">
               <h5><b> List Your Property with Ease</b></h5>
               <p>Have a space to rent out? Connect with potential tenants quickly and effortlessly on Room-Mate. Start listing today!</p>
             </div>
           </div>
           <div class="carousel-item">
-            <img src="https://media.istockphoto.com/id/1464143895/photo/hostel-dormitory-beds-at-cheap-room.jpg?s=2048x2048&w=is&k=20&c=KTe6Gxh9fE06uw4BFtrjsRdaWtToBXsjGJcTpXnJruA=" class="d-block w-100" alt="img" height="650px">
+            <img src="https://thumbs.dreamstime.com/b/backpackers-hostel-modern-bunk-beds-dorm-room-twelve-people-inside-79935795.jpg" class="d-block w-100" alt="img" height="650px">
             <div class="carousel-caption d-none d-md-block">
               <h5> <b> Your Next Home Awaits</b></h5>
               <p>Discover fully-furnished, budget-friendly, and secure accommodations tailored to your needs. Begin your journey with Room-Mate!</p>
@@ -176,12 +176,12 @@ footer .install img {
             
             <div class="col pt-3">
             <div class="card cardh" style="width: 20rem;">
-                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcReXabc2hcbX79xhoE28O8e4QYfIW2l9efkWA&s" class="card-img-top" alt="img">
+                <img src="<%= rs.getString(7) %>" class="card-img-top" alt="img">
                 <div class="card-body">
                     <h5 class="card-title"><%= rs.getString(1) %></h5>
                 </div>
                 <ul class="list-group list-group-flush">
-                  <li class="list-group-item"><%= rs.getString(3) %>$</li>  
+                  <li class="list-group-item">&#8377;<%= rs.getString(3) %><b>/Month</b></li>  
                 </ul>
                 <div class="card-body">
                     <a href="listing.jsp?title=<%= rs.getString(1) %>"><button type="button" class="btn btn-light">Rent It</button></a>

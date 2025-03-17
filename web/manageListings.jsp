@@ -70,6 +70,7 @@
                 <th>City</th>
                  <th>Owner</th>
                 <th>Action</th>
+                <th>Image</th>
             </tr>
             <% 
                 
@@ -89,6 +90,7 @@
                 <td><%= rs.getString("location") %></td>
                 <td><%= rs.getString("city") %></td>
                 <td><%= rs.getString("owner") %></td>
+                <td><a href="<%= rs.getString("image")%>">Image Link</a></td>
                 <td><form method="POST" action="deleteAdmin">
                         <input type="hidden" name="type" value="listing">
                         <input type="hidden" name="title" value="<%= rs.getString("title") %>">

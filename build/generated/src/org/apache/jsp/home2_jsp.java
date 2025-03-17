@@ -185,7 +185,9 @@ public final class home2_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("            \n");
       out.write("            <div class=\"col pt-3\">\n");
       out.write("            <div class=\"card cardh\" style=\"width: 20rem;\">\n");
-      out.write("                <img src=\"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcReXabc2hcbX79xhoE28O8e4QYfIW2l9efkWA&s\" class=\"card-img-top\" alt=\"img\">\n");
+      out.write("                <img src=\"");
+      out.print( rs.getString(7) );
+      out.write("\" class=\"card-img-top\" alt=\"img\">\n");
       out.write("                <div class=\"card-body\">\n");
       out.write("                    <h5 class=\"card-title\">");
       out.print( rs.getString(1) );
@@ -214,14 +216,7 @@ public final class home2_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("        </div>\n");
       out.write("      </div>\n");
       out.write("\n");
-      out.write("     \n");
-      out.write("     \n");
-      out.write("\n");
-      out.write("\n");
-      out.write("\n");
-      out.write("              \n");
-      out.write("\n");
-      out.write("\n");
+      out.write("   \n");
       out.write("\n");
       out.write("\n");
       out.write("\n");

@@ -29,9 +29,10 @@ public class uploadListing extends HttpServlet {
        String city = request.getParameter("city");
        String location = request.getParameter("location");
        String owner = request.getParameter("owner");
+       String image = request.getParameter("image");
        
         uploadListings uploader = new   uploadListings();
-        boolean login = uploader.upload(title,description,price,location,city,owner);
+        boolean login = uploader.upload(title,description,price,location,city,owner,image);
          
        if(login){
              HttpSession  session = request.getSession(true);

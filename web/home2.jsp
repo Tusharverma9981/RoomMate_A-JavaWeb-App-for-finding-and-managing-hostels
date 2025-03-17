@@ -141,12 +141,12 @@ footer .install img {
             
             <div class="col pt-3">
             <div class="card cardh" style="width: 20rem;">
-                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcReXabc2hcbX79xhoE28O8e4QYfIW2l9efkWA&s" class="card-img-top" alt="img">
+                <img src="<%= rs.getString(7) %>" class="card-img-top" alt="img">
                 <div class="card-body">
                     <h5 class="card-title"><%= rs.getString(1) %></h5>
                 </div>
                 <ul class="list-group list-group-flush">
-                  <li class="list-group-item"><%= rs.getString(3) %>$</li>  
+                    <li class="list-group-item">&#8377;<%= rs.getString(3) %> <b>/Month</b></li>  
                 </ul>
                 <div class="card-body">
                     <a href="ownlisting.jsp?title=<%= rs.getString(1) %>"><button type="button" class="btn btn-light">Rent It</button></a>

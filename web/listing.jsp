@@ -57,7 +57,7 @@
     
     <%
            
-
+            String username =(String)session.getAttribute("username");
             String title = request.getParameter("title");
 
             try {
@@ -75,16 +75,16 @@
     <h3>Listing details</h3>
     </div>
     <div class="card col-6 offset-3 show-card" > 
-        <img src="https://media.istockphoto.com/id/1464143895/photo/hostel-dormitory-beds-at-cheap-room.jpg?s=2048x2048&w=is&k=20&c=KTe6Gxh9fE06uw4BFtrjsRdaWtToBXsjGJcTpXnJruA=" alt="image" class="card-img-top show-img" height="500px">
+        <img src="<%= rs.getString(7) %>" alt="image" class="card-img-top show-img" height="500px">
     <div class="card-body">
         <p class="card-text">
             <b> <%= rs.getString(1) %> </b><br/>
             
             <%= rs.getString(2) %> <br/>
-            &#8377; <%= rs.getString(3) %> <br/>
-           <%= rs.getString(4) %> <br/>
-          <%= rs.getString(5) %> <br/>
-          Owned by <%= rs.getString(6) %> <br/>
+            <b>per Month:</b> &#8377; <%= rs.getString(3) %> <br/>
+          <b>Located at:</b> <%= rs.getString(4) %> <br/>
+         <b>In City:</b>  <%= rs.getString(5) %> <br/>
+           <b>Owned By:</b> <%= rs.getString(6) %> <br/>
 
         </p>
         </div>
@@ -99,7 +99,7 @@
         
     <div class="btns">
 
-        <form method="POST" action="">
+        <form method="POST" action="uploadReview">
             <button class="btn btn-outline-dark col-1 offset-3 edit-btn mt-3">Rent it</button>
         </form>
         </div>
@@ -107,29 +107,15 @@
         <div class="col-8 offset-3 mb-3">
             <hr>
             <h4>Leave a Review</h4>
-            <form action="" method="POST" novalidate class="needs-validation">
-               
-                <div class="mb-3 mt-3">
-                    <label for="rating" class="form-label">Rating</label>
-                <fieldset class="starability-slot">
-                   
-                    
-                    <input type="radio" id="no-rate" class="input-no-rate" name="review[rating]" value="1" checked aria-label="No rating." />
-                    <input type="radio" id="first-rate1" name="review[rating]" value="1" />
-                    <label for="first-rate1" title="Terrible">1 star</label>
-                    <input type="radio" id="first-rate2" name="review[rating]" value="2" />
-                    <label for="first-rate2" title="Not good">2 stars</label>
-                    <input type="radio" id="first-rate3" name="review[rating]" value="3" />
-                    <label for="first-rate3" title="Average">3 stars</label>
-                    <input type="radio" id="first-rate4" name="review[rating]" value="4" />
-                    <label for="first-rate4" title="Very good">4 stars</label>
-                    <input type="radio" id="first-rate5" name="review[rating]" value="5" />
-                    <label for="first-rate5" title="Amazing">5 stars</label>
-                  </fieldset>
-                </div>
-                <div class="mb-3 mt-3">
+            <form action="uploadReview" method="POST"  class="needs-validation">
+                <div class="mb-3 mt-3"> 
+                    <input type="hidden" value="<%= username %>" name="username">
+                       <input type="hidden" value="<%= title %>" name="title">
+                      
+                       <br>
                     <label for="comment" class="form-label">Comments</label>
-                    <textarea name="review[comment]" id="comment" cols="30" rows="5"
+                   
+                    <textarea name="comment" id="comment" cols="30" rows="5"
                     class="form-control" required></textarea>
                 </div>
                 <button class="btn btn-outline-dark">Submit</button>
@@ -138,23 +124,40 @@
             <hr>
             <p>All Reviews</p>
             <div class="row">
-                
+                <%  
+                   
+                try {
+               
+              
+               Statement  stmt = Dbconnecter.getStatement();
+                String query = "SELECT * FROM reviewtable WHERE title='"+title+"'";
+              ResultSet  rs = stmt.executeQuery(query);
+
+                while (rs.next()) {
+                %>
     
                         <div class="card col-5 ms-3 mb-3  border">
                             <div class="card-body mt-3">
-                                <h5>Jone Doe</h5>
-                                <p class="card-text">Good place to stay
+                                <h5><b> @<%= rs.getString(2) %></b></h5>
+                                <p class="card-text"> <%= rs.getString(1) %>
                                 </p>
                             
                                 
                                 <p class="starability-result" data-rating="">
                                   
                                 </p>
-                                <form class="mb-3" method="POST" action="">
+                                <form class="mb-3" method="POST" action="deleteReview">
+                                    <input type="hidden" value="<%=  title %>" name="title">
+                                    <input type="hidden" value="<%=  rs.getString(1) %>" name="comment">
                                     <button class="btn btn-sm btn-dark">Delete</button>
                                 </form>
                             </div>
                         </div>
+                   <%
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }    %>
                 
             </div>
         </div>

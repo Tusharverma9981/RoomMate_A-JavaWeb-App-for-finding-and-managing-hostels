@@ -34,14 +34,15 @@ public class updatelisting extends HttpServlet {
        String city = request.getParameter("city");
        String location = request.getParameter("location");
        String owner = request.getParameter("owner");
+       String image = request.getParameter("image");
        
         listingUpdate updator = new listingUpdate();
         
-         boolean Updatedlist = updator.Update(title,description,price,location,city,owner);
+         boolean Updatedlist = updator.Update(title,description,price,location,city,owner,image);
          if(Updatedlist){
            response.sendRedirect("ownlisting.jsp?title="+title+"");
        }else{
-           response.sendRedirect("newListing.jsp");
+           response.sendRedirect("ownlisting.jsp?title="+title+"");
        }
         
     }

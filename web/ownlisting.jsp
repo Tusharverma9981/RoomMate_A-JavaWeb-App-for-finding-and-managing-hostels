@@ -126,16 +126,16 @@
     <h3>Listing details</h3>
     </div>
     <div class="card col-6 offset-3 show-card" > 
-        <img src="https://media.istockphoto.com/id/1464143895/photo/hostel-dormitory-beds-at-cheap-room.jpg?s=2048x2048&w=is&k=20&c=KTe6Gxh9fE06uw4BFtrjsRdaWtToBXsjGJcTpXnJruA=" alt="image" class="card-img-top show-img" height="500px">
+        <img src="<%= rs.getString(7) %>" class="card-img-top show-img" height="500px">
     <div class="card-body">
         <p class="card-text">
             <b> <%= rs.getString(1) %> </b><br/>
             
             <%= rs.getString(2) %> <br/>
-            &#8377; <%= rs.getString(3) %> <br/>
-           <%= rs.getString(4) %> <br/>
-          <%= rs.getString(5) %> <br/>
-          Owned by <%= rs.getString(6) %> <br/>
+          <b>per Month:</b>  &#8377; <%= rs.getString(3) %> <br/>
+          <b>Located at:</b>  <%= rs.getString(4) %> <br/>
+          <b>In City:</b><%= rs.getString(5) %> <br/>
+          <b>Owned By:</b><%= rs.getString(6) %> <br/>
 
         </p>
         </div>
