@@ -155,20 +155,14 @@ footer .install img {
       <hr>
 
 
-      <h2 class="text-center" id="simple-list-item-1">Find you next Home</h2>
+      <h2 class="text-center" id="simple-list-item-1">Available For Rent</h2>
       <div class="container text-center">
         <div div class="row">
             
-            <%
-           
-
-            
-
+            <% 
             try {
-               
-              
               Statement  stmt = Dbconnecter.getStatement();
-                String query = "SELECT * FROM listingtable";
+                String query = "SELECT * FROM listingtable WHERE status= 'approved'";
               ResultSet  rs = stmt.executeQuery(query);
 
                 while (rs.next()) {
@@ -202,12 +196,48 @@ footer .install img {
           Featured
         </div>
         <div class="card-body">
-          <h5 class="card-title">Special Offers</h5>
-          <p class="card-text">This is the discription of the offers given above </p>
+          <h5 class="card-title">Special Offer</h5>
+          <p class="card-text">50% OFF On First Rental(T&C applied)</p>
           <a href="#" class="btn btn-primary">get it</a>
         </div>
         <div class="card-footer text-body-secondary">
-          2 days ago
+          Will Expire Soon
+        </div>
+      </div>
+         <h2 class="text-center" id="simple-list-item-1">Available Soon</h2>
+      <div class="container text-center">
+        <div div class="row">
+            
+            <% 
+            try {
+              Statement  stmt = Dbconnecter.getStatement();
+                String query = "SELECT * FROM listingtable WHERE status= 'pending'";
+              ResultSet  rs = stmt.executeQuery(query);
+
+                while (rs.next()) {
+        %>
+            
+            <div class="col pt-3">
+            <div class="card cardh" style="width: 20rem;">
+                <img src="<%= rs.getString(7) %>" class="card-img-top" alt="img">
+                <div class="card-body">
+                    <h5 class="card-title"><%= rs.getString(1) %></h5>
+                </div>
+                <ul class="list-group list-group-flush">
+                  <li class="list-group-item">&#8377;<%= rs.getString(3) %><b>/Month</b></li>  
+                </ul>
+                <div class="card-body">
+                    
+                    <button type="button" class="btn btn-light">Available Soon</button>
+                </div>
+              </div>
+            </div>
+                
+                 <%
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }    %>
         </div>
       </div>
      
@@ -240,7 +270,7 @@ footer .install img {
         </div>
 
         <div class="col">
-            <h4>My Accout</h4>
+            <h4>My Account</h4>
             <a href="#">Sign In</a>
             <a href="#">View Favrites</a>
             <a href="#">My History</a>

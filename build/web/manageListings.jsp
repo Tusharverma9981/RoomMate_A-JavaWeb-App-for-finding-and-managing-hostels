@@ -15,7 +15,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Manage Users</title>
+    <title>Manage Litings</title>
     <style>
         body {
             background-color: #121212;
@@ -60,17 +60,19 @@
 </head>
 <body>
     <div class="container">
-        <h2>Manage Users</h2>
+        <h2>Manage Listings</h2>
         <table>
             <tr>
                 <th>Title</th>
-                <th>Description</th>
+                
                 <th>Price</th>
-                <th>Location</th>
+               
                 <th>City</th>
                  <th>Owner</th>
-                <th>Action</th>
-                <th>Image</th>
+                 <th>Status</th>
+                
+                <th>Delete</th>
+                <th>Approve</th>
             </tr>
             <% 
                 
@@ -80,21 +82,26 @@
                     
                     
                    Statement  stmt = Dbconnecter.getStatement();
-                    rs = stmt.executeQuery("SELECT * FROM listingtable");
+                    rs = stmt.executeQuery( "SELECT * FROM listingtable WHERE status= 'pending'");
                     while (rs.next()) {
             %>
             <tr>
                 <td><%= rs.getString("title") %></td>
-                <td><%= rs.getString("description") %></td>
+                
                 <td><%= rs.getString("price") %></td>
-                <td><%= rs.getString("location") %></td>
+               
                 <td><%= rs.getString("city") %></td>
                 <td><%= rs.getString("owner") %></td>
-                <td><a href="<%= rs.getString("image")%>">Image Link</a></td>
+                <td><%= rs.getString("Status") %></td>
+               
                 <td><form method="POST" action="deleteAdmin">
                         <input type="hidden" name="type" value="listing">
                         <input type="hidden" name="title" value="<%= rs.getString("title") %>">
                         <button>Delete listing</button> </form></td>
+                <td><form method="POST" action="UpdateAdmin">
+                        <input type="hidden" name="type" value="listing">
+                        <input type="hidden" name="title" value="<%= rs.getString("title") %>">
+                        <button>Approve listing</button> </form></td>      
             </tr>
             <%
                     }

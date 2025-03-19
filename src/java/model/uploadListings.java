@@ -15,9 +15,10 @@ import java.sql.Statement;
  */
 public class uploadListings {
      public boolean upload(String title,String description,String price,String city,String location,String owner,String image){
+         String status = "pending";
          Statement st = Dbconnecter.getStatement();
        try{
-           String query2="INSERT INTO listingtable values('"+title+"','"+description+"','"+price+"','"+city+"','"+location+"','"+owner+"','"+image+"')";
+           String query2="INSERT INTO listingtable values('"+title+"','"+description+"','"+price+"','"+city+"','"+location+"','"+owner+"','"+image+"','"+status+"')";
            System.out.println(query2);
         int i= st.executeUpdate(query2);
         if(i>0){

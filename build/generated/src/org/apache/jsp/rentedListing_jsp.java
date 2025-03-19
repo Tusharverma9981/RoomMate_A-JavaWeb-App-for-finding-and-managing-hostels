@@ -4,9 +4,10 @@ import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.jsp.*;
 import db.Dbconnecter;
-import java.sql.*;
+import java.sql.Statement;
+import java.sql.ResultSet;
 
-public final class manageListings_jsp extends org.apache.jasper.runtime.HttpJspBase
+public final class rentedListing_jsp extends org.apache.jasper.runtime.HttpJspBase
     implements org.apache.jasper.runtime.JspSourceDependent {
 
   private static final JspFactory _jspxFactory = JspFactory.getDefaultFactory();
@@ -43,8 +44,6 @@ public final class manageListings_jsp extends org.apache.jasper.runtime.HttpJspB
       _jspx_out = out;
       _jspx_resourceInjector = (org.glassfish.jsp.api.ResourceInjector) application.getAttribute("com.sun.appserv.jsp.resource.injector");
 
-      out.write("\n");
-      out.write("\n");
       out.write("\n");
       out.write("\n");
       out.write("\n");
@@ -101,19 +100,18 @@ public final class manageListings_jsp extends org.apache.jasper.runtime.HttpJspB
       out.write("</head>\n");
       out.write("<body>\n");
       out.write("    <div class=\"container\">\n");
-      out.write("        <h2>Manage Users</h2>\n");
+      out.write("        <h2>Information of all the Listing</h2>\n");
       out.write("        <table>\n");
       out.write("            <tr>\n");
       out.write("                <th>Title</th>\n");
-      out.write("                \n");
+      out.write("                <th>Description</th>\n");
       out.write("                <th>Price</th>\n");
-      out.write("               \n");
+      out.write("                <th>Location</th>\n");
       out.write("                <th>City</th>\n");
       out.write("                 <th>Owner</th>\n");
-      out.write("                 <th>Status</th>\n");
-      out.write("                \n");
-      out.write("                <th>Delete</th>\n");
-      out.write("                <th>Approve</th>\n");
+      out.write("                 \n");
+      out.write("                <th>Image</th>\n");
+      out.write("               \n");
       out.write("            </tr>\n");
       out.write("            ");
  
@@ -124,7 +122,7 @@ public final class manageListings_jsp extends org.apache.jasper.runtime.HttpJspB
                     
                     
                    Statement  stmt = Dbconnecter.getStatement();
-                    rs = stmt.executeQuery( "SELECT * FROM listingtable WHERE status= 'pending'");
+                    rs = stmt.executeQuery("SELECT  * FROM listingtable WHERE  status='booked'");
                     while (rs.next()) {
             
       out.write("\n");
@@ -132,33 +130,26 @@ public final class manageListings_jsp extends org.apache.jasper.runtime.HttpJspB
       out.write("                <td>");
       out.print( rs.getString("title") );
       out.write("</td>\n");
-      out.write("                \n");
+      out.write("                <td>");
+      out.print( rs.getString("description") );
+      out.write("</td>\n");
       out.write("                <td>");
       out.print( rs.getString("price") );
       out.write("</td>\n");
-      out.write("               \n");
+      out.write("                <td>");
+      out.print( rs.getString("location") );
+      out.write("</td>\n");
       out.write("                <td>");
       out.print( rs.getString("city") );
       out.write("</td>\n");
       out.write("                <td>");
       out.print( rs.getString("owner") );
       out.write("</td>\n");
-      out.write("                <td>");
-      out.print( rs.getString("Status") );
-      out.write("</td>\n");
       out.write("               \n");
-      out.write("                <td><form method=\"POST\" action=\"deleteAdmin\">\n");
-      out.write("                        <input type=\"hidden\" name=\"type\" value=\"listing\">\n");
-      out.write("                        <input type=\"hidden\" name=\"title\" value=\"");
-      out.print( rs.getString("title") );
-      out.write("\">\n");
-      out.write("                        <button>Delete listing</button> </form></td>\n");
-      out.write("                <td><form method=\"POST\" action=\"UpdateAdmin\">\n");
-      out.write("                        <input type=\"hidden\" name=\"type\" value=\"listing\">\n");
-      out.write("                        <input type=\"hidden\" name=\"title\" value=\"");
-      out.print( rs.getString("title") );
-      out.write("\">\n");
-      out.write("                        <button>Approve listing</button> </form></td>      \n");
+      out.write("                <td><a href=\"");
+      out.print( rs.getString("image"));
+      out.write("\">Image Link</a></td>\n");
+      out.write("                     \n");
       out.write("            </tr>\n");
       out.write("            ");
 
@@ -173,6 +164,8 @@ public final class manageListings_jsp extends org.apache.jasper.runtime.HttpJspB
       out.write("    </div>\n");
       out.write("</body>\n");
       out.write("</html>\n");
+      out.write("\n");
+      out.write("\n");
       out.write("\n");
       out.write("\n");
     } catch (Throwable t) {

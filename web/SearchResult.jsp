@@ -93,7 +93,7 @@ footer .install img {
                 <a class="nav-link active" aria-current="page" href="#simple-list-item-1"><i class="fa-solid fa-magnifying-glass"></i></a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="proflie.jsp">Proflie</a>
+                <a class="nav-link" href="proflie.jsp"></a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="rules.html"></a>
@@ -119,7 +119,7 @@ footer .install img {
       
 
 
-      <h2 class="text-center" id="simple-list-item-1">SEARCH RESULT'S</h2>
+      <h2 class="text-center" id="simple-list-item-1">SEARCH RESULTS</h2>
       <div class="container text-center">
         <div div class="row">
             
@@ -148,7 +148,7 @@ footer .install img {
                     <li class="list-group-item">&#8377;<%= rs.getString(3) %> <b>/Month</b></li>  
                 </ul>
                 <div class="card-body">
-                    <a href="ownlisting.jsp?title=<%= rs.getString(1) %>"><button type="button" class="btn btn-light">Rent It</button></a>
+                    <a href="listing.jsp?title=<%= rs.getString(1) %>"><button type="button" class="btn btn-light">Rent It</button></a>
                 </div>
               </div>
             </div>

@@ -159,7 +159,7 @@ public final class listing_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("        \n");
       out.write("    <div class=\"btns\">\n");
       out.write("\n");
-      out.write("        <form method=\"POST\" action=\"uploadReview\">\n");
+      out.write("        <form method=\"POST\" action=\"\">\n");
       out.write("            <button class=\"btn btn-outline-dark col-1 offset-3 edit-btn mt-3\">Rent it</button>\n");
       out.write("        </form>\n");
       out.write("        </div>\n");
@@ -167,9 +167,7 @@ public final class listing_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("        <div class=\"col-8 offset-3 mb-3\">\n");
       out.write("            <hr>\n");
       out.write("            <h4>Leave a Review</h4>\n");
-      out.write("            <form action=\"\" method=\"POST\"  class=\"needs-validation\">\n");
-      out.write("               \n");
-      out.write("               \n");
+      out.write("            <form action=\"uploadReview\" method=\"POST\"  class=\"needs-validation\">\n");
       out.write("                <div class=\"mb-3 mt-3\"> \n");
       out.write("                    <input type=\"hidden\" value=\"");
       out.print( username );
@@ -177,6 +175,8 @@ public final class listing_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("                       <input type=\"hidden\" value=\"");
       out.print( title );
       out.write("\" name=\"title\">\n");
+      out.write("                      \n");
+      out.write("                       <br>\n");
       out.write("                    <label for=\"comment\" class=\"form-label\">Comments</label>\n");
       out.write("                   \n");
       out.write("                    <textarea name=\"comment\" id=\"comment\" cols=\"30\" rows=\"5\"\n");
@@ -194,7 +194,7 @@ public final class listing_jsp extends org.apache.jasper.runtime.HttpJspBase
                 try {
                
               
-              Statement  stmt = Dbconnecter.getStatement();
+               Statement  stmt = Dbconnecter.getStatement();
                 String query = "SELECT * FROM reviewtable WHERE title='"+title+"'";
               ResultSet  rs = stmt.executeQuery(query);
 
@@ -204,11 +204,11 @@ public final class listing_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("    \n");
       out.write("                        <div class=\"card col-5 ms-3 mb-3  border\">\n");
       out.write("                            <div class=\"card-body mt-3\">\n");
-      out.write("                                <h5> ");
+      out.write("                                <h5><b> @");
       out.print( rs.getString(2) );
-      out.write("</h5>\n");
+      out.write("</b></h5>\n");
       out.write("                                <p class=\"card-text\"> ");
-      out.print( rs.getString(2) );
+      out.print( rs.getString(1) );
       out.write("\n");
       out.write("                                </p>\n");
       out.write("                            \n");
@@ -216,7 +216,13 @@ public final class listing_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("                                <p class=\"starability-result\" data-rating=\"\">\n");
       out.write("                                  \n");
       out.write("                                </p>\n");
-      out.write("                                <form class=\"mb-3\" method=\"POST\" action=\"\">\n");
+      out.write("                                <form class=\"mb-3\" method=\"POST\" action=\"deleteReview\">\n");
+      out.write("                                    <input type=\"hidden\" value=\"");
+      out.print(  title );
+      out.write("\" name=\"title\">\n");
+      out.write("                                    <input type=\"hidden\" value=\"");
+      out.print(  rs.getString(1) );
+      out.write("\" name=\"comment\">\n");
       out.write("                                    <button class=\"btn btn-sm btn-dark\">Delete</button>\n");
       out.write("                                </form>\n");
       out.write("                            </div>\n");

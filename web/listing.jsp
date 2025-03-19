@@ -85,24 +85,26 @@
           <b>Located at:</b> <%= rs.getString(4) %> <br/>
          <b>In City:</b>  <%= rs.getString(5) %> <br/>
            <b>Owned By:</b> <%= rs.getString(6) %> <br/>
+            <b>Status:</b> <%= rs.getString(8) %> <br/>
 
         </p>
         </div>
         </div>
     </div>
         
+        
+    <div class="btns">
+
+        <form method="POST" action="rentListing">
+            <input type="hidden" name="title" value="<%= rs.getString(1) %> ">
+            <button class="btn btn-outline-dark col-1 offset-3 edit-btn mt-3">Rent it</button>
+        </form>
+        </div>
                <%
                 }
             } catch (Exception e) {
                 e.printStackTrace();
             }    %>
-        
-    <div class="btns">
-
-        <form method="POST" action="uploadReview">
-            <button class="btn btn-outline-dark col-1 offset-3 edit-btn mt-3">Rent it</button>
-        </form>
-        </div>
     
         <div class="col-8 offset-3 mb-3">
             <hr>

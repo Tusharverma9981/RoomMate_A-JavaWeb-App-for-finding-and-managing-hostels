@@ -20,29 +20,36 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author tv464
  */
-@WebServlet(name = "deleteListing", urlPatterns = {"/deleteListing"})
-public class deleteListing extends HttpServlet {
+@WebServlet(name = "UpdateAdmin", urlPatterns = {"/UpdateAdmin"})
+public class UpdateAdmin extends HttpServlet {
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
-    { 
-          String title = request.getParameter("title");
-            Statement st = Dbconnecter.getStatement();
-       try{
-           String query5="";
+ { 
+        String query5="";
+         String title=request.getParameter("title");
           
+        String approved = "approved";
+     
+        System.out.print(title);
+        
+        
+        
+        
+       try{
            
-            query5="DELETE FROM listingtable WHERE title ='"+title+"'";
+            Statement st = Dbconnecter.getStatement();
+           
+            
+        query5="UPDATE listingtable SET status='"+approved+"' WHERE title='"+title+"' ";
            
      
            
            System.out.println(query5);
         int i= st.executeUpdate(query5);
         if(i>0){
-            
-             response.sendRedirect("home2.jsp");
+       response.sendRedirect("manageListings.jsp");
         }else{
-            response.sendRedirect( "ownlisting.jsp?title="+title+"");
-        }
-        
+       response.sendRedirect("manageListings.jsp");
+       }
        // con.close();
        }
        catch(SQLException e){

@@ -91,7 +91,7 @@
       
         <div class="mb-3">
             <label for="image" class="form-label">Upload new Image link</label>
-        <input name="image" placeholder="enter image link" class="form-control" type="text" >
+        <input name="image" placeholder="enter image link" class="form-control" type="text" value="<%= rs.getString(7) %>">
         </div>
         <div class="mb-3">
             <label for="price" class="form-label">Price</label>
@@ -100,11 +100,11 @@
         <div class="row">
         <div class="mb-3 col-md-4">
             <label for="city" class="form-label">City</label>    
-        <input name="city" placeholder="enter city" type="text" class="form-control" required value="<%= rs.getString(4) %>">
+        <input name="city" placeholder="enter city" type="text" class="form-control" required value="<%= rs.getString(5) %>">
         </div>
         <div class="mb-3 col-md-8">
         <label for="location" class="form-label">Location</label>
-        <input name="location" placeholder="enter location" type="text" class="form-control" required value="<%= rs.getString(5) %>">
+        <input name="location" placeholder="enter location" type="text" class="form-control" required value="<%= rs.getString(4) %>">
         </div>
         <div class="mb-3 col-md-8">
             <label for="owner" class="form-label">Owner</label>

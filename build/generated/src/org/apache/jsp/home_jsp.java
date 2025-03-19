@@ -197,21 +197,15 @@ public final class home_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("      <hr>\n");
       out.write("\n");
       out.write("\n");
-      out.write("      <h2 class=\"text-center\" id=\"simple-list-item-1\">Find you next Home</h2>\n");
+      out.write("      <h2 class=\"text-center\" id=\"simple-list-item-1\">Available For Rent</h2>\n");
       out.write("      <div class=\"container text-center\">\n");
       out.write("        <div div class=\"row\">\n");
       out.write("            \n");
       out.write("            ");
-
-           
-
-            
-
+ 
             try {
-               
-              
               Statement  stmt = Dbconnecter.getStatement();
-                String query = "SELECT * FROM listingtable";
+                String query = "SELECT * FROM listingtable WHERE status= 'approved'";
               ResultSet  rs = stmt.executeQuery(query);
 
                 while (rs.next()) {
@@ -256,12 +250,58 @@ public final class home_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("          Featured\n");
       out.write("        </div>\n");
       out.write("        <div class=\"card-body\">\n");
-      out.write("          <h5 class=\"card-title\">Special Offers</h5>\n");
-      out.write("          <p class=\"card-text\">This is the discription of the offers given above </p>\n");
+      out.write("          <h5 class=\"card-title\">Special Offer</h5>\n");
+      out.write("          <p class=\"card-text\">50% OFF On First Rental(T&C applied)</p>\n");
       out.write("          <a href=\"#\" class=\"btn btn-primary\">get it</a>\n");
       out.write("        </div>\n");
       out.write("        <div class=\"card-footer text-body-secondary\">\n");
-      out.write("          2 days ago\n");
+      out.write("          Will Expire Soon\n");
+      out.write("        </div>\n");
+      out.write("      </div>\n");
+      out.write("         <h2 class=\"text-center\" id=\"simple-list-item-1\">Available Soon</h2>\n");
+      out.write("      <div class=\"container text-center\">\n");
+      out.write("        <div div class=\"row\">\n");
+      out.write("            \n");
+      out.write("            ");
+ 
+            try {
+              Statement  stmt = Dbconnecter.getStatement();
+                String query = "SELECT * FROM listingtable WHERE status= 'pending'";
+              ResultSet  rs = stmt.executeQuery(query);
+
+                while (rs.next()) {
+        
+      out.write("\n");
+      out.write("            \n");
+      out.write("            <div class=\"col pt-3\">\n");
+      out.write("            <div class=\"card cardh\" style=\"width: 20rem;\">\n");
+      out.write("                <img src=\"");
+      out.print( rs.getString(7) );
+      out.write("\" class=\"card-img-top\" alt=\"img\">\n");
+      out.write("                <div class=\"card-body\">\n");
+      out.write("                    <h5 class=\"card-title\">");
+      out.print( rs.getString(1) );
+      out.write("</h5>\n");
+      out.write("                </div>\n");
+      out.write("                <ul class=\"list-group list-group-flush\">\n");
+      out.write("                  <li class=\"list-group-item\">&#8377;");
+      out.print( rs.getString(3) );
+      out.write("<b>/Month</b></li>  \n");
+      out.write("                </ul>\n");
+      out.write("                <div class=\"card-body\">\n");
+      out.write("                    \n");
+      out.write("                    <button type=\"button\" class=\"btn btn-light\">Available Soon</button>\n");
+      out.write("                </div>\n");
+      out.write("              </div>\n");
+      out.write("            </div>\n");
+      out.write("                \n");
+      out.write("                 ");
+
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }    
+      out.write("\n");
       out.write("        </div>\n");
       out.write("      </div>\n");
       out.write("     \n");
